@@ -37,8 +37,8 @@
 			$("#comp_intro").html(data.comp_intro);
 			let pid_id=getUrlParamByKey("id") || "";
 			let item = data.flowers.find(item=>item.pic_id==pid_id);
-			$("img").attr("src",item.pic_path);
 			$("#pic_intro").html(item.pic_intro);
+			$("img").attr("src",item.pic_path);
 		});
 
 		//截取参数
