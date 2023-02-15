@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="YES" name="apple-touch-fullscreen" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="email=no" name="format-detection" />
+	<meta content="no-store" http-equiv="Cache-Control" />
+	<meta content="240" name="MobileOptimized" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<title></title>
+	<style>
+		#pic_path img{
+			width: 100%;
+		}
+	</style>
+	<script type="text/javascript" src="juqery.min.js"></script>
+</head>
+
+<body>
+	<div>
+		<div id="comp_intro"></div>
+		<div id="pic_path">
+			<img src="" />
+		</div>
+		<div id="pic_intro"></div>
+	</div>
+</body>
+<script>
+	$(function () {
+		$.getJSON("https://raw.githubusercontent.com/wangdan001/by/main/flower/items.json", function (data) {
+			$("#comp_intro").html(data.comp_intro);
+			let pid_id=getUrlParamByKey("id") || "";
+			let item = data.flowers.find(item=>item.pic_id==pid_id);
+			$('title').html(item.pic_name);
+			$("#comp_intro").html(item.comp_intro);
+			$("#pic_path img").attr("src",item.pic_path);
+			$("#pic_intro").html(item.pic_intro);
+		});
+
+		//截取参数
+		function getUrlParamByKey(key, encryptFlag) {
+			var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+			var param = window.location.search.substr(1);
+			if (window.location.href.indexOf("#") > -1) {
+				param = window.location.href.split("?")[1];
+			}
+			if (encryptFlag == undefined || !!encryptFlag) {
+				param = decodeURI(param);
+			}
+			var r = param.match(reg);
+
+			if (r != null)
+				return unescape(r[2]);
+			return null;
+
+		};
+
+	})
+</script>
+
+</html>
