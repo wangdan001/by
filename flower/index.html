@@ -36,7 +36,14 @@
 		$.getJSON("https://raw.githubusercontent.com/wangdan001/by/main/flower/items.json", function (data) {
 			$("#comp_intro").html(data.comp_intro);
 			let pid_id=getUrlParamByKey("id") || "";
-			let item = data.flowers.find(item=>item.pic_id==pid_id);
+			let pinfo = data.flowers.find(item=>item.pic_id==pid_id);
+			
+			// data.flowers.forEach(item => {
+			// 	if(item.pic_id==pid_id){
+			// 		pinfo=item;
+			// 		return;
+			// 	}
+			// });
 			$("#pic_intro").html(item.pic_intro);
 			$("img").attr("src",item.pic_path);
 		});
