@@ -38,7 +38,6 @@
 			$("#comp_intro").html(data.comp_intro);
 			let pid_id=getUrlParamByKey("id") || "";
 			let item = data.flowers.find(item=>item.pic_id==pid_id);
-			$('title').html(item.pic_name);
 			$("#comp_intro").html(item.comp_intro);
 			$("#pic_path img").attr("src",item.pic_path);
 			$("#pic_intro").html(item.pic_intro);
