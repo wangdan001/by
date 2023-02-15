@@ -15,7 +15,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<style>
-		#pic_path img{
+		img{
 			width: 100%;
 		}
 	</style>
@@ -37,8 +37,7 @@
 			$("#comp_intro").html(data.comp_intro);
 			let pid_id=getUrlParamByKey("id") || "";
 			let item = data.flowers.find(item=>item.pic_id==pid_id);
-			$("#comp_intro").html(item.pic_intro);
-			$("#pic_path img").attr("src",item.pic_path);
+			$("img").attr("src",item.pic_path);
 			$("#pic_intro").html(item.pic_intro);
 		});
 
